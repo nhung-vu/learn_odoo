@@ -1,0 +1,52 @@
+<odoo>
+	<record id="ethnicity_view_tree" model="ir.ui.view">
+		<field name="name">ethnicity.tree</field>
+		<field name="model">ethnicity</field>
+		<field name="arch" type="xml">
+			<tree string="Ethnicity Tree">
+				<field name="name" />
+				<field name="description" />
+				<field name="country_ids"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="ethnicity_view_form" model="ir.ui.view">
+		<field name="name">ethnicity.form</field>
+		<field name="model">ethnicity</field>
+		<field name="arch" type="xml">
+			<form string="Ethnicity Form">
+				<sheet>
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="code"/>
+						</group>
+						<group>
+							<field name="description"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="country_ethnicity" string="Country of ethnicity">
+							<field name="country_ids">
+								<tree>
+									<field name="name" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="ethnicity_action"
+		model="ir.actions.act_window">
+		<field name="name">Ethnicity</field>
+		<field name="res_model">ethnicity</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem id="ethnicity_menu" sequence="10"
+		action="ethnicity_action" parent="root_menu" />
+</odoo>

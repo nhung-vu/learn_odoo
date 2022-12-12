@@ -1,0 +1,91 @@
+<odoo>
+	<record id="education_student_view_tree" model="ir.ui.view">
+		<field name="name">education.student.tree</field>
+		<field name="model">education.student</field>
+		<field name="arch" type="xml">
+			<tree string="Student Tree">
+				<field name="name" />
+				<field name="class_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="education_student_view_form" model="ir.ui.view">
+		<field name="name">education.student.form</field>
+		<field name="model">education.student</field>
+		<field name="arch" type="xml">
+			<form string="Student Form">
+				<sheet>
+					<div class="oe_title">
+						<h1>
+							<field name="name" placeholder="Name of the student" />
+						</h1>
+					</div>
+					<group>
+						<group>
+							<field name="class_id" />
+							<field name="country_id"/>
+							<field name="user_id"/>
+						</group>
+						<group>
+							<field name="ethnicity_id"/>
+							<field name="code_id"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="ed_history" string="Education History">
+							<field name="class_ids">
+								<tree>
+									<field name="name" />
+									<field name="create_date" />
+									<field name="create_uid" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="education_class_student_search" model="ir.ui.view">
+		<field name="name">education.student.search</field>
+		<field name="model">education.student</field>
+		<field name="arch" type="xml">
+			<search string="Student search">
+				<field name="name" />
+				<field name="class_id" />
+			</search>
+		</field>
+	</record>
+	
+	<record id="education_class_student_graph" model="ir.ui.view">
+		<field name="name">education.student.graph</field>
+		<field name="model">education.student</field>
+		<field name="arch" type="xml">
+			<graph string="Student graph">
+				<field name="create_date"/>
+			</graph>
+		</field>
+	</record>
+	
+		<record id="education_class_student_pivot" model="ir.ui.view">
+		<field name="name">education.student.pivot</field>
+		<field name="model">education.student</field>
+		<field name="arch" type="xml">
+			<pivot string="Student pivot">
+				<field name="name"/>
+			</pivot>
+		</field>
+	</record>
+
+	<record id="education_student_action"
+		model="ir.actions.act_window">
+		<field name="name">Student</field>
+		<field name="res_model">education.student</field>
+		<field name="view_mode">tree,form,graph,pivot</field>
+	</record>
+
+	<menuitem id="education_student_menu" sequence="10"
+		action="education_student_action" parent="root_menu" />
+</odoo>

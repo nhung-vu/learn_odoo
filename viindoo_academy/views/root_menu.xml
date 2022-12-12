@@ -1,0 +1,5 @@
+<odoo>
+	<data>
+		<menuitem id="root_menu" sequence="10" name="Academy"/>
+	</data>       
+</odoo>

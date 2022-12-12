@@ -1,0 +1,14 @@
+<odoo>
+	<record id="education_student_view2_form" model="ir.ui.view">
+		<field name="name">education.student2.form</field>
+		<field name="model">education.student</field>
+		<field name="inherit_id" ref="viindoo_academy.education_student_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="/form/sheet/notebook/page" position="after">
+				<page name="student2" string="Students of Vip class">
+					<field name=""
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>

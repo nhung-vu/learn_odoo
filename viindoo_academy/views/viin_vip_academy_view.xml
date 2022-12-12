@@ -1,0 +1,74 @@
+<odoo>
+    <record id="viin_vip_academy_view_tree" model="ir.ui.view">
+        <field name="name">viin.vip.academy.tree</field>
+        <field name="model">viin.vip.academy</field>
+		<field name="arch" type="xml">
+			<tree string="Class Tree">
+				<field name="name" />
+				<field name="description" />
+				<field name="state" />
+				<field name="credit"/>
+			</tree>
+		</field>
+	</record>
+
+    <record id="viin_vip_academy_view_form" model="ir.ui.view">
+        <field name="name">viin.vip.academy.form</field>
+        <field name="model">viin.vip.academy</field>
+		<field name="arch" type="xml">
+			<form string="Class Form">
+				<header>
+					<field name="state" widget="statusbar" />
+				</header>
+				<sheet>
+					<widget name="web_ribbon" title="Archived"
+						bg_color="bg-danger"
+						attrs="{'invisible': [('active', '=', True)]}" />
+					<div class="oe_title">
+						<h1>
+							<field name="name" placeholder="This is class name" />
+						</h1>
+					</div>
+					<group>
+						<group>
+							<field name="active" invisible="1" />
+							<field name="credit"/>
+						</group>
+						<group>
+							<field name="description" placeholder="This is description" />
+						</group>
+					</group>
+
+					<notebook>
+						<page name="std" string="Students">
+							<field name="student_ids" />
+						</page>
+						<page name="stds" string="Historical Students">
+							<field name="historical_student_ids">
+								<tree>
+									<field name="name" />
+									<field name="create_date" />
+									<field name="create_uid" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+   
+
+	<record id="viin_vip_academy_action" model="ir.actions.act_window">
+	    <field name="name">Class Vip</field>
+	    <field name="res_model">viin.vip.academy</field>
+	    <field name="view_mode">tree,form</field>
+	</record>
+    
+    <menuitem
+        id="viin_vip_academy_menu" 
+        sequence="10"
+        action="viin_vip_academy_action"
+        parent="root_menu"/>
+        
+</odoo>

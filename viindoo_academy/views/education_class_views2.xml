@@ -1,0 +1,23 @@
+<odoo> 
+    <record id="education_class_view2_tree" model="ir.ui.view">
+        <field name="name">education.class2.tree</field>
+        <field name="model">education.class</field>
+        <field name="inherit_id" ref="viindoo_academy.education_class_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="country_id"/>
+            </xpath>
+        </field>    
+    </record>
+
+    <record id="education_class_view2_form" model="ir.ui.view">
+        <field name="name">education.class2.form</field>
+        <field name="model">education.class</field>
+        <field name="inherit_id" ref="viindoo_academy.education_class_view_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='active']" position="before">
+        		<field name="country_id"/>	        		
+			</xpath>
+        </field>   
+    </record>     
+</odoo>
